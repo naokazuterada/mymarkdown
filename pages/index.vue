@@ -1,33 +1,37 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        mymarkdown
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-    </div>
-  </section>
+<div id="app">
+  <Home v-if="!isLogin"></Home>
+  <Editor v-if="isLogin"></Editor>
+</div>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import Home from '~/components/Home.vue'
+import Editor from '~/components/Editor.vue'
+import firebase from '~/plugins/firebase'
+import auth from '~/plugins/auth'
 
 export default {
+  name: 'app',
+  data() {
+    return {
+      isLogin: false
+    }
+  },
   components: {
-    AppLogo
+    Home,
+    Editor
+  },
+  created: function() {
+    firebase.auth().onAuthStateChanged(user => {
+      console.log(user)
+      if(user) {
+        this.isLogin = true;
+      }
+      else {
+        this.isLogin = false;
+      }
+    })
   }
 }
 </script>
