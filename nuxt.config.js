@@ -11,6 +11,19 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    secript: [
+      { src: 'https://www.gstatic.com/firebasejs/5.3.1/firebase.js' },
+      { innerHTML: '// Initialize Firebase\
+                    var config = {\
+                      apiKey: "AIzaSyD2vMqBxij3DiZ4NAbhbzTYaOiylOddyi0",\
+                      authDomain: "mymarkdown-dee5f.firebaseapp.com",\
+                      databaseURL: "https://mymarkdown-dee5f.firebaseio.com",\
+                      projectId: "mymarkdown-dee5f",\
+                      storageBucket: "",\
+                      messagingSenderId: "164321246414"\
+                    };\
+                    firebase.initializeApp(config);' }
     ]
   },
   mode: 'spa',
