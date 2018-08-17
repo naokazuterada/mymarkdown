@@ -1,24 +1,24 @@
 <template>
 <div class="editor">
   <h1>エディター画面</h1>
-  <button @click="googleLogout">ログアウト</button>
+  <span>{{ user.displayName }}</span>
+  <button @click="logout">ログアウト</button>
 </div>
 </template>
 
 <script>
-import firebase from '~/plugins/firebase'
+import firebase from '~/plugins/firebase';
 
-export default {　
-  name: 'editor',　
+export default {
+  name: 'editor',
+  props: ['user'],
   data() {　
     return {　
     }　
   },
   methods: {
-    googleLogout: function() {
-      firebase.auth().signOut().then(function(){
-        console.log('logout...')
-      })
+    logout: function() {
+      firebase.auth().signOut();
     }
   }
 }　
